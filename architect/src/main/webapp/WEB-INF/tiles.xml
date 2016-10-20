@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="baseLayout" template="/jsp/base/BaseLayout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="scenario" value="" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="sidebar" value="/jsp/sidebar/Sidebar.jsp" />
+        <put-attribute name="footer" value="/jsp/base/Footer.jsp" />
+    </definition>
+    
+    <definition name="baseAjax" template="/jsp/base/BaseAjax.jsp">
+    	<put-attribute name="body" value="" />
+    </definition>
+
+	<definition name="/sidebarArchitectures.tiles" template="/jsp/sidebar/Architectures.jsp" extends="baseAjax">
+	</definition>
+	<definition name="/sidebarReponsibilities.tiles" template="/jsp/sidebar/Responsibilities.jsp" extends="baseAjax">
+	</definition>
+	<definition name="/sidebarScenarios.tiles" template="/jsp/sidebar/Scenarios.jsp" extends="baseAjax">
+	</definition>
+	<definition name="/sidebarDesignBots.tiles" template="/jsp/sidebar/DesignBots.jsp" extends="baseAjax">
+	</definition>
+	<definition name="/sidebarArchitectureStates.tiles" template="/jsp/sidebar/ArchitectureStates.jsp" extends="baseAjax">
+	</definition>
+
+    <!-- ## DesignBot ## -->
+    <definition name="/listDesignBots.tiles" extends="baseLayout">
+        <put-attribute name="designBots" value="current"/>
+        <put-attribute name="title" value="Architect - Design Bots List" />
+        <put-attribute name="body" value="/jsp/designbots/ListDesignBots.jsp" />
+    </definition>
+    <definition name="/newDesignBot.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/designbots/NewDesignBot.jsp" />
+    </definition>
+    <definition name="/insertdesign.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/designbots/InsertDb.jsp" />
+    </definition>
+    <definition name="/deletedesign.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/designbots/DeleteDb.jsp" />
+    </definition>
+    <definition name="/editDesignBot.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/designbots/EditDesignBot.jsp" />
+    </definition>
+    <definition name="/guardardesign.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/designbots/GuardarDb.jsp" />
+    </definition>
+    <definition name="/asignarTacticas.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/designbots/Tacticas.jsp" />
+    </definition>
+    <definition name="/guardarTacticas.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/designbots/SaveTactics.jsp" />
+    </definition>
+    <definition name="/designBotDetails.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/designbots/DesignBotDetails.jsp" />
+    </definition>
+    <!-- #### -->
+
+    <!-- ## Responsabilidades ## -->
+    <definition name="/listResponsibilities.tiles" extends="baseLayout">
+        <put-attribute name="responsibility" value="current"/>
+        <put-attribute name="title" value="Architect - Responsibilities List" />
+        <put-attribute name="body" value="/jsp/responsibility/ListResponsibilities.jsp" />
+    </definition>
+    <definition name="/responsibilityDetails.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/responsibility/ResponsibilityDetails.jsp" />
+    </definition>
+    <definition name="/newResponsibility.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/responsibility/NewResponsibility.jsp" />
+    </definition>
+    <definition name="/insertResponsibility.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/responsibility/InsertResponsibility.jsp" />
+    </definition>
+    <definition name="/editResponsibilityDialog.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/responsibility/EditResponsibility.jsp" />
+    </definition>
+    <definition name="/saveResponsibility.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/responsibility/SaveResponsibility.jsp" />
+    </definition>
+    <definition name="/deleteResponsibility.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/responsibility/DeleteResponsibility.jsp" />
+    </definition>
+    <definition name="/editDependenciesDialog.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/responsibility/EditDependencies.jsp" />
+    </definition>
+   <definition name="/saveDependencies.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/responsibility/SaveDependencies.jsp" />
+    </definition>
+    <definition name="/editScenariosDialog.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/responsibility/EditScenarios.jsp" />
+    </definition>
+    <definition name="/saveScenarios.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/responsibility/SaveScenarios.jsp" />
+    </definition>
+    <!-- #### -->
+
+	<!-- ## Dependencies ## -->
+    <definition name="/listDependencies.tiles" extends="baseLayout">
+        <put-attribute name="title" value="Architect - Dependencies List" />
+        <put-attribute name="dependency" value="current"/>
+        <put-attribute name="body" value="/jsp/dependency/ListDependencies.jsp" />
+    </definition>
+    <definition name="/newDependency.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/dependency/NewDependency.jsp" />
+    </definition>
+    <definition name="/editDependency.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/dependency/EditDependency.jsp" />
+    </definition>
+    <definition name="/deleteDependency.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/dependency/DeleteDependency.jsp" />
+    </definition>
+    <!-- #### -->
+    
+    <!-- ## Modules ## -->
+    <definition name="/listModules.tiles" extends="baseLayout">
+        <put-attribute name="title" value="Architect - Modules List" />
+        <put-attribute name="module" value="current"/>
+        <put-attribute name="body" value="/jsp/module/ListModules.jsp" />
+    </definition>
+    <definition name="/newModule.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/module/NewModule.jsp" />
+    </definition>
+    <definition name="/moduleDetails.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/module/ModuleDetails.jsp" />
+    </definition>
+    <definition name="/editModule.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/module/EditModule.jsp" />
+    </definition>
+	<!-- #### -->
+
+    <!-- ## ModulesView ## -->
+    <definition name="/modulesView.tiles" extends="baseLayout">
+        <put-attribute name="module" value="current"/>
+        <put-attribute name="title" value="Vista de modulos" />
+        <put-attribute name="body" value="/modulesView/ModulesView.jsp" />
+    </definition>
+    <!-- #### -->
+    
+    <!-- ## Scenarios Views ## -->
+    <definition name="/listScenarios.tiles" extends="baseLayout">
+        <put-attribute name="title" value="Architect - Scenarios List" />
+        <put-attribute name="scenario" value="current"/>
+        <put-attribute name="body" value="/jsp/scenario/ListScenarios.jsp" />
+    </definition>
+   <definition name="/newscenario.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/scenario/NewScenario.jsp" />
+    </definition>
+    <definition name="/viewscenario.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/scenario/ViewScenario.jsp" />
+    </definition>
+    <definition name="/insertscenario.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/scenario/InsertScenario.jsp" />
+    </definition>
+    <definition name="/editscenario.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/scenario/EditScenario.jsp" />
+    </definition>
+    <definition name="/savescenario.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/scenario/SaveScenario.jsp" />
+    </definition>
+    <definition name="/deletescenario.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/scenario/DeleteScenario.jsp" />
+    </definition>
+    <definition name="/viewResponsabilities.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/scenario/ViewResponsabilities.jsp" />
+    </definition>
+    <!-- #################### -->
+    <!-- ## Architectures List ## -->
+    <definition name="/listArchitectures.tiles" template="/jsp/architecture/ListArchitectures.jsp">
+    	<put-attribute name="title" value="Architect - Architectures List" />
+    </definition>
+    <definition name="/editArchitecture.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/architecture/EditArchitecture.jsp" />
+    </definition>
+    <definition name="/saveArchitecture.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/architecture/SaveArchitecture.jsp" />
+    </definition>
+    <definition name="/deleteArchitecture.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/architecture/DeleteArchitecture.jsp" />
+    </definition>
+   <definition name="/newArchitecture.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/architecture/NewArchitecture.jsp" />
+    </definition>
+    <definition name="/insertArchitecture.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/architecture/InsertArchitecture.jsp" />
+    </definition>
+    
+    <!-- Diagram -->
+    <definition name="/diagram.tiles" extends="baseLayout">
+        <put-attribute name="diagram" value="current"/>
+        <put-attribute name="title" value="Architect - Diagram" />
+        <put-attribute name="body" value="/jsp/diagram/Diagram.jsp" />
+    </definition>
+
+    <!-- Analysis Panel -->
+    <definition name="/analysisPanel.tiles" extends="baseLayout">
+        <put-attribute name="title" value="Architect - Analysis Panel" />
+        <put-attribute name="panel" value="current"/>
+        <put-attribute name="body" value="/jsp/analysisPanel/AnalysisPanel.jsp" />
+    </definition>
+    <definition name="/newArchitectureAnalysis.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/analysisPanel/NewArchitectureAnalysis.jsp" />
+    </definition>
+    <definition name="/editArchitectureAnalysis.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/analysisPanel/EditArchitectureAnalysis.jsp" />
+    </definition>
+    <definition name="/appliedChangesList.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/analysisPanel/ChangesList.jsp" />
+    </definition>
+    <definition name="/change.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/analysisPanel/Change.jsp" />
+    </definition>
+    <definition name="/respControlPanel.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/analysisPanel/Resp.jsp" />
+    </definition>
+    <definition name="/getExecutionLog.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/analysisPanel/Change.jsp" />
+    </definition>
+    <definition name="/solution.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/analysisPanel/Solution.jsp" />
+    </definition>
+    <definition name="/blank.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/analysisPanel/Resp.jsp" />
+    </definition>
+    <definition name="/compareTactics.tiles" extends="baseAjax">
+        <put-attribute name="body" value="/jsp/analysisPanel/compareTactics.jsp" />
+    </definition>
+</tiles-definitions>

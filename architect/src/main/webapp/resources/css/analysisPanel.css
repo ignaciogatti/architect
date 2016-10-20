@@ -1,0 +1,55 @@
+.analysisResultsTable {
+	margin: 5px;
+	border-collapse: collapse;
+	table-layout: automatic;
+	width: -moz-min-content;
+}
+
+.tableScenarios thead th {
+    min-width: -moz-max-content;
+}
+
+.portletsContainer {
+	width: 100%;
+	float: left;
+}
+
+.column {
+	width: 360px;
+	float: left;
+	padding-bottom: 20px;
+	margin-left: 0px;
+	margin-top: 12px;
+}
+
+.portlet {
+	margin: 0 0 0 0;
+}
+
+.portlet-header {
+	margin: 0.3em;
+	padding-bottom: 4px;
+	padding-left: 0.2em;
+}
+
+.portlet-header:hover {
+	cursor: move
+}
+
+.portlet-header .ui-icon {
+	float: right;
+}
+
+.portlet-content {
+	padding: 0.4em;
+}
+
+.ui-sortable-placeholder {
+	border: 1px dotted black;
+	visibility: visible !important;
+	height: 50px !important;
+}
+
+.ui-sortable-placeholder * {
+	visibility: hidden;
+}

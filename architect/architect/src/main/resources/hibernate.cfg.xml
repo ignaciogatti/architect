@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <mapping resource="ElementChange.hbm.xml"/>
+    <mapping class="architect.model.Architecture" />
+    <mapping class="architect.model.ArchitectureAnalysis" />
+    <mapping class="architect.model.Dependency" />
+    <mapping class="architect.model.DesignBot" />
+    <mapping class="architect.model.ElementChange" />
+    <mapping class="architect.model.Group" />
+    <mapping class="architect.model.Module" />
+    <mapping class="architect.model.QualityAttribute" />
+    <mapping class="architect.model.Responsibility" />
+    <mapping class="architect.model.Scenario" />
+    <mapping class="architect.model.User" />
+    <mapping class="architect.model.Tactic" />
+  </session-factory>
+</hibernate-configuration>

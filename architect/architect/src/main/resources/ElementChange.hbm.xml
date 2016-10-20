@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="architect.model.ElementChange" table="element_change">
+    <id column="id" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="id_architecture" type="long">
+      <column name="id_architecture">
+        <comment/>
+      </column>
+    </property>
+	<property name="element_type" type="string">
+      <column length="255" name="element_type">
+        <comment/>
+      </column>
+    </property>
+    <property name="change_number" type="long">
+      <column name="change_number">
+        <comment/>
+      </column>
+    </property>
+    <property name="change_type" type="string">
+      <column length="255" name="change_type">
+        <comment/>
+      </column>
+    </property>
+    <property name="oldElementblob" type="blob">
+      <column name="old_element">
+        <comment/>
+      </column>
+    </property>
+    <property name="newElementblob" type="blob">
+      <column name="new_element">
+        <comment/>
+      </column>
+    </property>
+     <property name="consistent" type="java.lang.Boolean">
+      <column name="consistent">
+        <comment/>
+      </column>
+    </property>
+     <property name="undoChange" type="java.lang.Boolean">
+      <column name="undo_change">
+        <comment/>
+      </column>
+    </property>
+  </class>
+</hibernate-mapping>

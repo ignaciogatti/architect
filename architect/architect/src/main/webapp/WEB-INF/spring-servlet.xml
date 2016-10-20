@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+        http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+        
+    <mvc:annotation-driven />
+    
+    <security:global-method-security jsr250-annotations="enabled" pre-post-annotations="enabled" secured-annotations="enabled" />
+    
+	<context:annotation-config />	
+	<context:component-scan base-package="architect" />
+
+	<amq:connectionFactory id="connectionFactory" brokerURL="vm://localhost" />
+
+	<!-- Chat Beans -->
+	
+	<amq:queue id="chatQueue" name="queue.chat" />
+	<amq:topic id="chatTopic" name="topic.chat" />
+
+	<bean id="chatTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="topic.chat" />
+		<property name="pubSubDomain" value="true"/>
+	</bean>
+	
+	<!-- Scenario Beans -->
+		
+	<amq:queue id="scenarioQueue" name="queue.scenario" />
+	<amq:topic id="scenarioTopic" name="topic.scenario" />
+
+	<bean id="scenarioQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="queue.scenario" />
+		<property name="pubSubDomain" value="false"/>
+	</bean>
+
+	<bean id="scenarioTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="topic.scenario" />
+		<property name="pubSubDomain" value="true"/>
+	</bean>
+
+	<!-- Responsibility Beans -->
+		
+	<amq:queue id="responsibilityQueue" name="queue.responsibility" />
+	<amq:topic id="responsibilityTopic" name="topic.responsibility" />
+
+	<bean id="responsibilityQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="queue.responsibility" />
+		<property name="pubSubDomain" value="false"/>
+	</bean>
+
+	<bean id="responsibilityTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="topic.responsibility" />
+		<property name="pubSubDomain" value="true"/>
+	</bean>
+	
+	<!-- Dependency Beans -->
+		
+	<amq:queue id="dependencyQueue" name="queue.dependency" />
+	<amq:topic id="dependencyTopic" name="topic.dependency" />
+
+	<bean id="dependencyQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="queue.dependency" />
+		<property name="pubSubDomain" value="false"/>
+	</bean>
+
+	<bean id="dependencyTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="topic.dependency" />
+		<property name="pubSubDomain" value="true"/>
+	</bean>
+	
+	<jms:listener-container connection-factory="connectionFactory">
+		<jms:listener destination="queue.chat" ref="chatService" method="doProcessing" />
+		<jms:listener destination="queue.scenario" ref="scenarioService" method="doProcessing" />
+		<jms:listener destination="queue.responsibility" ref="responsibilityService" method="doProcessing" />
+		<jms:listener destination="queue.dependency" ref="dependencyService" method="doProcessing" />
+	</jms:listener-container>
+	
+	<!-- Module Beans -->
+		
+	<amq:queue id="moduleQueue" name="queue.module" />
+	<amq:topic id="moduleTopic" name="topic.module" />
+
+	<bean id="moduleQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="queue.module" />
+		<property name="pubSubDomain" value="false"/>
+	</bean>
+
+	<bean id="moduleTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="topic.module" />
+		<property name="pubSubDomain" value="true"/>
+	</bean>
+	
+	<!-- DesignBot Beans -->
+		
+	<amq:queue id="designBotQueue" name="queue.designBot" />
+	<amq:topic id="designBotTopic" name="topic.designBot" />
+
+	<bean id="designBotQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="queue.designBot" />
+		<property name="pubSubDomain" value="false"/>
+	</bean>
+
+	<bean id="designBotTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="topic.designBot" />
+		<property name="pubSubDomain" value="true"/>
+	</bean>
+	
+	<!-- Architecture Analysis Beans -->
+		
+	<amq:queue id="architectureAnalysisQueue" name="queue.architectureAnalysis" />
+	<amq:topic id="architectureAnalysisTopic" name="topic.architectureAnalysis" />
+
+	<bean id="architectureAnalysisQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="queue.architectureAnalysis" />
+		<property name="pubSubDomain" value="false"/>
+	</bean>
+
+	<bean id="architectureAnalysisTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="topic.architectureAnalysis" />
+		<property name="pubSubDomain" value="true"/>
+	</bean>
+	
+	<!-- Architecture Beans -->
+		
+	<amq:queue id="architectureQueue" name="queue.architecture" />
+	<amq:topic id="architectureTopic" name="topic.architecture" />
+
+	<bean id="architectureQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="queue.architecture" />
+		<property name="pubSubDomain" value="false"/>
+	</bean>
+
+	<bean id="architectureTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestinationName" value="topic.architecture" />
+		<property name="pubSubDomain" value="true"/>
+	</bean>
+	
+	<!-- Queues Listeners Beans -->
+	
+	<jms:listener-container connection-factory="connectionFactory">
+		<jms:listener destination="queue.chat" ref="chatService" method="doProcessing" />
+		<jms:listener destination="queue.scenario" ref="scenarioService" method="doProcessing" />
+		<jms:listener destination="queue.responsibility" ref="responsibilityService" method="doProcessing" />
+		<jms:listener destination="queue.dependency" ref="dependencyService" method="doProcessing" />
+		<jms:listener destination="queue.module" ref="moduleService" method="doProcessing" />
+		<jms:listener destination="queue.designBot" ref="designBotService" method="doProcessing" />
+		<jms:listener destination="queue.architectureAnalysis" ref="architectureAnalysisService" method="doProcessing" />
+		<jms:listener destination="queue.architecture" ref="architectureService" method="doProcessing" />
+	</jms:listener-container>
+
+	<!-- Tiles Beans -->
+
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
+	</bean>
+
+	<!-- JSPs Bean -->
+
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="/WEB-INF/jdbc.properties" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="${jdbc.driverClassName}"
+		p:url="${jdbc.databaseurl}" p:username="${jdbc.username}" p:password="${jdbc.password}" />
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+<!-- 				<prop key="hibernate.show_sql">true</prop> -->
+				<prop key="connection.pool_size">1</prop>
+				<prop key="cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
+				<prop key="hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+	<tx:annotation-driven />
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<mvc:interceptors>
+		<bean class="architect.interceptor.RequestInitializeInterceptor" />
+		<mvc:interceptor>
+			<mvc:mapping path="/*" />
+			<bean class="architect.interceptor.RequestInitializeInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+</beans>

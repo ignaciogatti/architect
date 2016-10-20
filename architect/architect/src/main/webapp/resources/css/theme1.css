@@ -1,0 +1,152 @@
+body{
+	background:#f3f9ff url(../../resources/images/bg_blue.jpg) repeat-x top;
+	color: #202020;
+}
+a, a:visited{
+	color:#375b91;
+}
+input{
+	border:1px solid #d9e6f0;
+}
+select{
+	border:1px solid #d9e6f0;
+}
+#header h2{
+	color:#FFF;
+}
+#content{
+	background:#FFF;
+}
+#topmenu a,#topmenu a:visited{
+	color:#FFF;
+	background:#7e9dcc;
+	-moz-border-radius:8px 8px 0 0;
+        border-radius : 8px 8px 0 0;
+        -webkit-border-radius : 8px 8px 0 0;
+}
+
+#topmenu a:hover {color: #375b91; font-weight: bold; background: #FFF url(../../resources/images/bg_menu_blue.jpg) repeat-x top;}
+
+#topmenu .current a, #topmenu .current a:hover, #topmenu .current a:visited{
+	color:#375b91;
+	background: #FFF url(../../resources/images/bg_menu_blue.jpg) repeat-x top;
+	/*border-left: #FFF 1px solid;
+	border-right: #FFF 1px solid;*/
+}
+#top-panel{
+	background:#FFF;
+}
+
+#header-title {
+	float: left;
+}
+
+#logged-in-txt {
+	margin-top: 25px;
+	float: right;
+	color: rgb(255, 255, 255);
+}
+
+#styleswitcher{
+	background:#FFFFFF;
+}
+#footer{
+	background:#FFF;
+}
+#box{
+	border:1px solid #d9e6f0;
+}
+#box h3{
+	background:#f3f9ff;
+	border-bottom:1px solid #d9e6f0;
+	color:#375b91;
+}
+/***************
+	  Forms
+***************/
+form.form fieldset {
+	border:1px solid #d9e6f0;
+}
+form.form legend {
+	border:1px solid #d9e6f0;
+	background:#fff url(../../resources/images/form_blue.gif) repeat-x center left;
+	color:#375b91;
+}
+form.form input {
+	border:1px solid #d9e6f0;
+	background:#fff url(../../resources/images/form_blue.gif) repeat-x top left;
+}
+form.form textarea {
+	border:1px solid #d9e6f0;
+	background:#fff url(../../resources/images/form_blue.gif) repeat-x bottom left;
+}
+form.form option {
+	background:#FFF;
+}
+form.form optgroup {
+	background:#d9e6f0;
+}
+form.form optgroup option {
+
+}
+form.form #button1, form#form #button2 {
+	color:#375b91;
+}
+form.form #button1:hover, form#form #button2:hover {
+	color:#000;
+}
+/***************
+	Home
+***************/
+#infobox{
+	border:1px solid #d9e6f0;
+}
+#infobox h3{
+	background:#f3f9ff;
+	border-bottom:1px solid #d9e6f0;
+	color:#375b91;
+}
+#rightnow {
+	border:1px solid #d9e6f0;
+}
+#rightnow .reallynow {
+	background:#f3f9ff;
+	color:#375b91;
+}
+#rightnow h3{
+	background:#f3f9ff;
+	border-bottom:1px solid #d9e6f0;
+}
+
+/******** Formularios *******************/
+.dialogContainer { width : 100%; float : left; }
+.dialogContainer .itemDialog { width : 100%; float : left; margin-top : 10px;}
+.dialogContainer .itemDialog .itemDialogLeft { width : 30%; float : left }
+.dialogContainer .itemDialog .itemDialogLeft label { float : right ; font-size : 11px; padding : 3px;}
+.dialogContainer .itemDialog .itemDialogRight { width : 70%; float : left }
+.dialogContainer .itemDialog .itemDialogRight input { margin-left: 10px; width : 200px; font-size : 11px; border : solid 1px #D9E6F0;  }
+.dialogContainer .itemDialog .itemDialogRight textarea { margin-left : 10px; width : 200px; height : 150px; border : solid 1px #D9E6F0; }
+.dialogContainer .itemDialog .itemDialogRight select { margin-left : 10px; }
+.dialogContainer .itemDialog .itemDialogRight input:focus{ outline: 2px solid #ffa; }
+.dialogContainer .itemDialog .itemDialogRight textarea:focus{outline: 2px solid #ffa; }
+.dialogContainer .itemDialog .itemDialogRight select:focus { outline: 2px solid #ffa; }
+.dialogContainer .itemDialog .itemDialogRight span { float:left; font-size:11px; padding:3px; }
+
+/****************** Tablas ********************************/
+.tableScenarios thead th { background:url("../../resources/images/tableheaderBg.png") repeat-x scroll 0 0 transparent; border:1px solid #ccc; font-size:11px; font-weight:bold; height:20px; padding-left:10px; text-align:center;  }
+.tableScenarios thead th:hover {background : #e5f5ff; cursor : pointer}
+.tableScenarios tbody tr:hover { background : #e5f5ff }
+.tableScenarios tbody td { font-size : 11px; }
+/*********************************************************/
+.btnAdd { width : 100%; float : left; margin-top : 15px;}
+.btnAdd a { float : right; margin-right : 20px; font-size: 11px;}
+.btnAdd a img { vertical-align: middle; }
+.btnAdd a:hover { opacity : 0.5; }
+/************** Dependencias *********************/
+.asignDependencies { width : 100%; float : left; margin-top: 30px; text-align: center;  }
+.asignDependencies h3 { color : #375B91 }
+.asignDependencies .itemDialog{ float: left; width: 100%; text-align: left; }
+
+.asignScenarios { width : 100%; float : left; margin-top: 30px; text-align: center;  }
+.asignScenarios h3 { color : #375B91 }
+.asignScenarios .itemDialog{ float: left; width: 100%; text-align: left; }
